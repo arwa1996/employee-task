@@ -1,0 +1,23 @@
+.layoutBg {
+  width: 100%;
+  min-height: 884px;
+  height: 100vh;
+  background-size: cover;
+  background: url(//workmotion.com/wp-content/themes/workmotion/css/../images/banner-bg-desktop.png)
+    0 0 no-repeat !important;
+}
+
+.cardStyle {
+  background-color: Transparent;
+  width: 'auto';
+  height: 'auto';
+  border-color: transparent;
+}
+
+.contentStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: inherit;
+  padding: 1rem;
+}
