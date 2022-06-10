@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout } from 'antd';
 import styles from './Header.module.scss';
 
-export const HeaderMVP: React.FC = () => {
+export const HeaderEmployee: React.FC = () => {
   const { Header } = Layout;
 
   return (
