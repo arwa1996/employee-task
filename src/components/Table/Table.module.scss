@@ -1,0 +1,9 @@
+@import '../Theme/Theme.module.scss';
+
+.tableStyle {
+  padding: 1rem;
+}
+
+.rowClassName1 {
+  @include font(_, 1rem);
+}
