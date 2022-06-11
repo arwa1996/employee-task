@@ -2,8 +2,8 @@
 import React from 'react';
 import { Space, Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/lib/table';
-import { EmployeeType } from '../../App';
 import styles from './Table.module.scss';
+import { EmployeeType } from '../../types/EmployeeType';
 
 interface TableProps {
   employees: EmployeeType[];
@@ -44,9 +44,9 @@ const TableEmployee: React.FC<TableProps> = ({
       key: 'action',
       render: (_, record) => {
         let id = record.id;
-        const statusArray = employeeStatus.map((status) => {
+        const statusArray = employeeStatus.map((status, index) => {
           return (
-            <div onClick={(e) => handleUpdateEmployeeStatus(e, id)}>
+            <div key={index} onClick={(e) => handleUpdateEmployeeStatus(e, id)}>
               <a>{status + ' '}</a>
             </div>
           );
@@ -54,7 +54,7 @@ const TableEmployee: React.FC<TableProps> = ({
         return (
           <Space size='large'>
             {statusArray}
-            <div onClick={(e) => handleDeleteEmployee(id)}>
+            <div onClick={() => handleDeleteEmployee(id)}>
               <a>Delete</a>
             </div>
           </Space>
