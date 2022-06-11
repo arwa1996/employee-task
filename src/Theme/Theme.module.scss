@@ -1,0 +1,12 @@
+$primaryFont: 'Work Sans', sans-serif;
+$white: rgba(255, 255, 255, 1);
+$darkGreen: #00362e;
+
+@mixin font($color, $size, $weight) {
+  font-family: $primaryFont;
+  font-size: normal;
+  font-weight: $weight;
+  line-height: 27px;
+  font-size: $size;
+  color: $color;
+}
