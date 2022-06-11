@@ -1,21 +1,23 @@
 import React from 'react';
-import { Card, Layout } from 'antd';
-import { HeaderMVP } from './components/Layout/Header/Header';
-import TableEmployee from './components/Table/TableProjects/Table';
+import { Layout } from 'antd';
+import { HeaderEmployee } from './components/Layout/Header/Header';
 import styles from './App.module.scss';
-import './App.module.scss';
+import { HomePage } from './pages/HomePage/HomePage';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 function App() {
   const { Content } = Layout;
+
   return (
-    <Layout className={styles.layoutBg}>
-      <HeaderMVP />
-      <Content className={styles.contentStyle}>
-        <Card className={styles.cardStyle}>
-          <TableEmployee />
-        </Card>
-      </Content>
-    </Layout>
+    <Provider store={store}>
+      <Layout className={styles.layoutBg}>
+        <HeaderEmployee />
+        <Content className={styles.contentStyle}>
+          <HomePage />
+        </Content>
+      </Layout>
+    </Provider>
   );
 }
 
