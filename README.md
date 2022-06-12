@@ -44,7 +44,8 @@ yarn
 yarn json-server --watch src/db.json
 ```
 
-2- Run FrontEnd Local
+2- Run Frontend Local
+
 In the root directory run:
 
 ```sh
@@ -52,6 +53,8 @@ yarn start
 ```
 
 ## Run tests
+
+In the root directory run:
 
 ```sh
 yarn run cypress open
