@@ -15,7 +15,7 @@ interface TableProps {
   ) => void;
 }
 
-const TableEmployee: React.FC<TableProps> = ({
+export const TableEmployee: React.FC<TableProps> = ({
   employees,
   handleDeleteEmployee,
   handleUpdateEmployeeStatus,
@@ -66,5 +66,3 @@ const TableEmployee: React.FC<TableProps> = ({
     />
   );
 };
-
-export default TableEmployee;

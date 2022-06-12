@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, Input, Space } from 'antd';
 import { Modal } from '../../components/Modal/Modal';
 import { Select } from '../../components/Select/Select';
-import TableEmployee from '../../components/Table/Table';
+import { TableEmployee } from '../../components/Table/Table';
 import { useDispatch } from 'react-redux';
 import {
   addEmployee,
@@ -21,7 +21,7 @@ const employeeStatusArr: string[] = [
   'In-active',
 ];
 
-function EmployeeTable() {
+export const EmployeeTable: React.FC = () => {
   const dispatch = useDispatch();
   const [employeesRedux] = useAppSelector((state: any) => [
     state.employee.employees,
@@ -119,6 +119,4 @@ function EmployeeTable() {
       </Modal>
     </>
   );
-}
-
-export default EmployeeTable;
+};

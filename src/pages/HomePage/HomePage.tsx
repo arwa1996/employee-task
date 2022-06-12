@@ -1,6 +1,6 @@
 import React from 'react';
-import EmployeeTable from '../../containers/EmployeeTable/EmployeeTable';
+import { EmployeeTable } from '../../containers/EmployeeTable/EmployeeTable';
 
-export function HomePage(): JSX.Element {
+export const HomePage: React.FC = () => {
   return <EmployeeTable />;
-}
+};
