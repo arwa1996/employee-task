@@ -105,6 +105,7 @@ export const EmployeeTable: React.FC = () => {
             className={styles.buttonStyle}
             size='large'
             onClick={() => setIsModalVisible(true)}
+            id='addEmployeeBtn'
           >
             Add Employee
           </Button>

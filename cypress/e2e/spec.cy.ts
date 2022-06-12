@@ -1,15 +1,11 @@
 /// <reference types="cypress" />
-
-// var employeeName = 'Cypress';
-// var employeeStatus = 'Added';
-
 describe('Input form', () => {
   it('opens the site', () => {
     cy.visit('localhost:3001'); //this is the server that was started earlier
   });
   it('should open modal when user clicks on Add employee', () => {
     //get btn
-    cy.get('.ant-btn').click();
+    cy.get('#addEmployeeBtn').click();
     cy.get('.ant-modal').should('exist');
   });
   it('add employee modal should have input field and select field', () => {
@@ -20,5 +16,6 @@ describe('Input form', () => {
   it('show alert messages when submitting empty fields', () => {
     //get btn
     cy.get('.ant-btn-primary > span').click();
+    cy.get('.ant-notification-notice').should('exist');
   });
 });
