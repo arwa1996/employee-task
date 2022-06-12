@@ -4,12 +4,10 @@ import { getEmployees } from './EmployeesAction';
 
 type employeesState = {
   employees: EmployeeType[];
-  loading: boolean;
 };
 
 const initialState: employeesState = {
   employees: [],
-  loading: false,
 };
 
 const employeesSlice = createSlice({
@@ -21,7 +19,6 @@ const employeesSlice = createSlice({
       getEmployees.fulfilled,
       (state, action: PayloadAction<EmployeeType[]>) => {
         state.employees = action.payload;
-        state.loading = false;
       }
     );
   },
