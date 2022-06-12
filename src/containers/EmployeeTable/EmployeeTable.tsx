@@ -13,14 +13,7 @@ import {
 import { useAppSelector } from '../../store/hooks';
 import styles from './EmployeeTable.module.scss';
 import { openNotification } from '../../util/notification/Notification';
-
-const employeeStatusArr: string[] = [
-  'Added',
-  'In-check',
-  'Approved',
-  'Active',
-  'In-active',
-];
+import { employeeStatusArr } from '../../enums/employeeStatusArr';
 
 export const EmployeeTable: React.FC = () => {
   const dispatch = useDispatch();
