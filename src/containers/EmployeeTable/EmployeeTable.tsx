@@ -23,11 +23,8 @@ const employeeStatusArr: string[] = [
 
 export const EmployeeTable: React.FC = () => {
   const dispatch = useDispatch();
-  const [employeesRedux] = useAppSelector((state: any) => [
-    state.employee.employees,
-  ]);
+  const [employees] = useAppSelector((state) => [state.employee.employees]);
 
-  const [loading, setLoading] = useState<boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [employeeName, setEmployeeName] = useState<string>('');
   const [employeeStatus, setEmployeeStatus] = useState<string>('');
@@ -71,28 +68,24 @@ export const EmployeeTable: React.FC = () => {
 
   return (
     <>
-      <Card className={styles.cardStyle}>
-        <Button
-          className={styles.buttonStyle}
-          size='large'
-          onClick={() => setIsModalVisible(true)}
-        >
-          Add Employee
-        </Button>
+      {employees.length >= 1 && (
+        <Card className={styles.cardStyle}>
+          <Button
+            className={styles.buttonStyle}
+            size='large'
+            onClick={() => setIsModalVisible(true)}
+          >
+            Add Employee
+          </Button>
 
-        {loading ? (
-          <p className={styles.loadingStyle}>
-            Hold on, fetching data may take some time :)
-          </p>
-        ) : (
           <TableEmployee
-            employees={employeesRedux}
+            employees={employees}
             handleDeleteEmployee={handleDeleteEmployee}
             handleUpdateEmployeeStatus={handleUpdateEmployeeStatus}
             employeeStatus={employeeStatusArr}
           />
-        )}
-      </Card>
+        </Card>
+      )}
       <Modal
         open={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
