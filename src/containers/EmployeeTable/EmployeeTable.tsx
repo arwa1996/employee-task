@@ -87,7 +87,6 @@ export const EmployeeTable: React.FC = () => {
   const handleDeleteEmployee = async (id: string) => {
     await dispatch(deleteEmployee(id));
     dispatch(getEmployees());
-    openNotification('Employee Deleted successfully', 'success');
   };
 
   return (
