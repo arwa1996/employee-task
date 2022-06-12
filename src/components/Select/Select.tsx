@@ -22,7 +22,7 @@ export const Select: React.FC<selectProps> = ({
       }}
     >
       {options?.map((option, index) => (
-        <Option value={option} key={index}>
+        <Option value={option} key={index} on>
           {option}
         </Option>
       ))}

@@ -4,7 +4,7 @@ import axios from 'axios';
 const apiUrl = 'http://localhost:3000/employees';
 export default {
   getEmployees: () => axios.get(apiUrl),
-  updateEmployeeStatus: (id, employeeStatus) =>
+  updateEmployeeStatus: (id, _, employeeStatus) =>
     axios.patch(`${apiUrl}/${id}`, {
       status: employeeStatus,
     }),

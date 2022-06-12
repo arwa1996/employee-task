@@ -22,8 +22,16 @@ const addEmployee = createAsyncThunk(
 
 const updateEmployeeStatus = createAsyncThunk(
   'employee/updateEmployee',
-  async ({ id, status }: { id: string; status: string }) => {
-    await await employeeApi.updateEmployeeStatus(id, status);
+  async ({
+    id,
+    currentStatus,
+    status,
+  }: {
+    id: string;
+    currentStatus: string;
+    status: string;
+  }) => {
+    await employeeApi.updateEmployeeStatus(id, currentStatus, status);
   }
 );
 

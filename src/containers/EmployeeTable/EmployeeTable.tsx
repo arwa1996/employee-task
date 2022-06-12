@@ -36,30 +36,58 @@ export const EmployeeTable: React.FC = () => {
 
   const handleUpdateEmployeeStatus = async (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    currentStatus: string,
     id: string
   ) => {
     await dispatch(
-      updateEmployeeStatus({ id, status: e.currentTarget.innerText })
+      updateEmployeeStatus({
+        id,
+        currentStatus,
+        status: e.currentTarget.innerText,
+      })
     );
     dispatch(getEmployees());
-    openNotification('Employee Status updated successfully', 'success');
+  };
+
+  const validateHandleUpdateEmployeeStatus = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    currentStatus: string,
+    id: string
+  ) => {
+    if (currentStatus !== e.currentTarget.innerText) {
+      handleUpdateEmployeeStatus(e, currentStatus, id);
+      openNotification('Employee Status updated successfully', 'success');
+    } else {
+      openNotification('Choose different employee status', 'error');
+    }
   };
 
   const handleAddEmployee = async (
     employeeName: string,
     employeeStatus: string
   ) => {
+    await dispatch(addEmployee({ employeeName, employeeStatus }));
+    dispatch(getEmployees());
+  };
+
+  const ValidatehandleAddEmployee = (
+    employeeName: string,
+    employeeStatus: string
+  ) => {
+    const re = /^[A-Za-z]+$/;
     if (employeeName !== '' && employeeStatus !== '') {
-      if (employeeName.length >= 3) {
-        await dispatch(addEmployee({ employeeName, employeeStatus }));
-        dispatch(getEmployees());
+      if (employeeName.length >= 3 && re.test(employeeName)) {
+        handleAddEmployee(employeeName, employeeStatus);
         setEmployeeName('');
-        setEmployeeStatus('');
+        openNotification('Employee Added successfully', 'success');
       } else {
-        alert('Employee name must be at least 3 characters');
+        openNotification(
+          'Employee Name should be atleast 3 characters and should contain only alphabets',
+          'error'
+        );
       }
     } else {
-      alert('Please fill all fields');
+      openNotification('Please fill all fields', 'error');
     }
   };
 
@@ -84,7 +112,7 @@ export const EmployeeTable: React.FC = () => {
           <TableEmployee
             employees={employees}
             handleDeleteEmployee={handleDeleteEmployee}
-            handleUpdateEmployeeStatus={handleUpdateEmployeeStatus}
+            handleUpdateEmployeeStatus={validateHandleUpdateEmployeeStatus}
             employeeStatus={employeeStatusArr}
           />
         </Card>
@@ -94,7 +122,7 @@ export const EmployeeTable: React.FC = () => {
         onCancel={() => setIsModalVisible(false)}
         modalTitle='Add Employee'
         onOk={() => {
-          handleAddEmployee(employeeName, employeeStatus);
+          ValidatehandleAddEmployee(employeeName, employeeStatus);
           setIsModalVisible(false);
         }}
       >

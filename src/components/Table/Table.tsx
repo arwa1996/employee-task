@@ -11,6 +11,7 @@ interface TableProps {
   handleDeleteEmployee: (id: string) => void;
   handleUpdateEmployeeStatus: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    currentStatus: string,
     id: string
   ) => void;
 }
@@ -36,12 +37,16 @@ export const TableEmployee: React.FC<TableProps> = ({
     {
       title: 'Actions',
       key: 'action',
-      render: (_, record) => {
+      render: (_, record, index) => {
         let id = record.id;
         const statusArray = employeeStatus.map((status, index) => {
+          let currentStatus = record.status as unknown as string;
           return (
-            <div key={index} onClick={(e) => handleUpdateEmployeeStatus(e, id)}>
-              <a>{status + ' '}</a>
+            <div
+              key={index}
+              onClick={(e) => handleUpdateEmployeeStatus(e, currentStatus, id)}
+            >
+              <a>{status}</a>
             </div>
           );
         });
