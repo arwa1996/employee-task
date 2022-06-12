@@ -12,6 +12,7 @@ import {
 } from '../../store/employee/EmployeesAction';
 import { useAppSelector } from '../../store/hooks';
 import styles from './EmployeeTable.module.scss';
+import { openNotification } from '../../util/notification/Notification';
 
 const employeeStatusArr: string[] = [
   'Added',
@@ -41,6 +42,7 @@ export const EmployeeTable: React.FC = () => {
       updateEmployeeStatus({ id, status: e.currentTarget.innerText })
     );
     dispatch(getEmployees());
+    openNotification('Employee Status updated successfully', 'success');
   };
 
   const handleAddEmployee = async (
@@ -64,6 +66,7 @@ export const EmployeeTable: React.FC = () => {
   const handleDeleteEmployee = async (id: string) => {
     await dispatch(deleteEmployee(id));
     dispatch(getEmployees());
+    openNotification('Employee Deleted successfully', 'success');
   };
 
   return (
