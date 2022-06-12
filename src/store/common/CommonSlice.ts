@@ -4,7 +4,7 @@ import {
   isRejected,
   isFulfilled,
 } from '@reduxjs/toolkit';
-import { openNotification } from '../../components/notification/Notification';
+import { openNotification } from '../../util/notification/Notification';
 
 type CommonState = {
   error: string | undefined;
