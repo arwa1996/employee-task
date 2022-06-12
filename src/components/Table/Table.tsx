@@ -7,6 +7,7 @@ import { EmployeeType } from '../../types/EmployeeType';
 
 interface TableProps {
   employees: EmployeeType[];
+  employeeStatus: string[];
   handleDeleteEmployee: (id: string) => void;
   handleUpdateEmployeeStatus: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -18,15 +19,8 @@ const TableEmployee: React.FC<TableProps> = ({
   employees,
   handleDeleteEmployee,
   handleUpdateEmployeeStatus,
+  employeeStatus,
 }) => {
-  const employeeStatus = [
-    'Added',
-    'In-check',
-    'Approved',
-    'Active',
-    'In-active',
-  ];
-
   const columns: ColumnsType<EmployeeType> = [
     {
       title: 'Employee Name',

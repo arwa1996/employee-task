@@ -9,9 +9,17 @@ import {
   deleteEmployee,
   getEmployees,
   updateEmployeeStatus,
-} from '../../store/Auth/EmployeesAction';
+} from '../../store/employee/EmployeesAction';
 import { useAppSelector } from '../../store/hooks';
 import styles from './EmployeeTable.module.scss';
+
+const employeeStatusArr: string[] = [
+  'Added',
+  'In-check',
+  'Approved',
+  'Active',
+  'In-active',
+];
 
 function EmployeeTable() {
   const dispatch = useDispatch();
@@ -81,6 +89,7 @@ function EmployeeTable() {
             employees={employeesRedux}
             handleDeleteEmployee={handleDeleteEmployee}
             handleUpdateEmployeeStatus={handleUpdateEmployeeStatus}
+            employeeStatus={employeeStatusArr}
           />
         )}
       </Card>
@@ -103,7 +112,7 @@ function EmployeeTable() {
 
           <Select
             placeholder='Select Employee status'
-            options={['Added', 'In-check', 'Approved', 'Active', 'In-active']}
+            options={employeeStatusArr}
             onChange={(value) => setEmployeeStatus(value)}
           />
         </Space>
