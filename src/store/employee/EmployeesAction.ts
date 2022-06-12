@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import employeeApi from '../../api/employeeApi';
 import { EmployeeType } from '../../types/EmployeeType';
 
-const getEmployees = createAsyncThunk('place/getPlacesState', async () => {
+const getEmployees = createAsyncThunk('employee/getEmployeeState', async () => {
   const result = await employeeApi.getEmployees();
   return result.data as EmployeeType[];
 });
